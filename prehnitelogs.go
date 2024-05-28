@@ -1,4 +1,4 @@
-package PLog
+package prehnitelogs
 
 import (
 	"fmt"

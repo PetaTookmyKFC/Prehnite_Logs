@@ -1,3 +1,3 @@
-module github.com/Petatookmykfc/Prehnite_logs
+module github.com/Petatookmykfc/prehnitelogs
 
 go 1.22.0
