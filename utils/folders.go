@@ -46,7 +46,11 @@ func CreateFile(filePath string) error {
 	_, err = os.Stat(filePath)
 	if os.IsNotExist(err) {
 		// err = os.WriteFile(filePath, []byte("Hello World!"), os.ModeAppend.Perm())
-		_, err = os.Create(filePath)
+		file, err := os.Create(filePath)
+		if err == nil {
+			file.Close()
+		}
+
 		fmt.Println(err)
 		// if os.IsNotExist(err) {
 		// 	return nil
