@@ -1,17 +1,26 @@
 # Prehnite log
 
-Writes log to a file... 
+This is a very basic log system. It will write to the console and write to a log file within the direct `/Logs`. I don't know what I'm doing use at your own risk.
 
 
-Logger is the main structure used to manage all the log files.
+Writes logs into files. Files are stored in folders ( The folders are a direct copy of the source code locations ). For example the function `func MagicFunc ( )` in the file `/wd/magic/test.go ` would log to `/Logs/magic/MagicFunc.log`
+The log will also fmt.println the log message into the console
 
-The logging system is split into 2 parts. 
-The Logger contains multiple Binders. The binder is the main way to seperate the logs. ( Similar to a database in SQL Databases)
+## Error Parts
 
-The binder can be used for individual tests / logs for individual functions. Each binder can be used for the modules. 
+#### Log Level
+This is how important is the log. This can have multiple values. I would sugest using them as follows. The default values include.
+* Log - This is the base, this should just be used to note unimportant information
+* Info - This is the next level, this is not that important but may be required. Such as optional data.
+* Warning - The next level, the program can continue but this should be looked into. An example of this could be a enviroment variable that isn't quite correct. Such as a url thats missing `localhost`
+* Danger - This is the highest level. This should be used when a log.Fatal or log.Panic is triggered. The program couldn't continue.
 
+#### Time
+This is the time that the log is triggered. ( YYYY-MM-DD HH-MM-SS )
 
+#### Location
+This is the location where the log was triggered. this includes the file and the line in the file.
 
-The ledger is the controller for the logs directly. ( Similar to a table in SQL Databases).
+#### Message
+This is the message that is send into the log function. ( This must be a string! )
 
-Logger -< Binder -< Ledger
