@@ -1,4 +1,4 @@
-package PLogs
+package PLog
 
 import (
 	"fmt"
