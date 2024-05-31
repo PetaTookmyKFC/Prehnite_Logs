@@ -14,6 +14,7 @@ This is how important is the log. This can have multiple values. I would sugest 
 * Info - This is the next level, this is not that important but may be required. Such as optional data.
 * Warning - The next level, the program can continue but this should be looked into. An example of this could be a enviroment variable that isn't quite correct. Such as a url thats missing `localhost`
 * Danger - This is the highest level. This should be used when a log.Fatal or log.Panic is triggered. The program couldn't continue.
+* Custom -> To use custom AddType name, prefix can be used and then use `CustomLog` or `GetCustomLogMethod`
 
 #### Time
 This is the time that the log is triggered. ( YYYY-MM-DD HH-MM-SS )
@@ -24,3 +25,7 @@ This is the location where the log was triggered. this includes the file and the
 #### Message
 This is the message that is send into the log function. ( This must be a string! )
 
+
+
+!Important
+This is mainly used for developing as each log is seperated by function and not module or file.

@@ -16,6 +16,7 @@ const MainLoc string = "Logs"
 
 var LogLocks = sync.Map{}
 
+type LogFunc func(msg string) (genMessage error)
 type LogType int8
 
 const (
@@ -46,7 +47,7 @@ func AddType(name string, prefix string) {
 }
 
 // This is a method so you dont have to keep writing in the type of log you want and you can just save it into a variable
-func GetCustomLogMethod(name string) func(msg string) (genMessage error) {
+func GetCustomLogMethod(name string) LogFunc {
 	return func(msg string) (genMessage error) {
 		return writeCustomLog(name, msg)
 	}
