@@ -49,18 +49,18 @@ func AddType(name string, prefix string) {
 }
 
 // This is a method so you dont have to keep writing in the type of log you want and you can just save it into a variable
-func GetCustomLogMethod(name string) LogFunc {
+func GetCustomLogMethod(name string, GroupByModule bool) LogFunc {
 	return func(msg string) (genMessage error) {
-		return writeCustomLog(name, msg)
+		return writeCustomLog(name, msg, GroupByModule)
 	}
 }
 
 // This method is useful for custom types, these must be added prior to being used. ( Only the prefix can be changed -- to the end of the `>>` characters)
-func CustomLog(LogTypeName string, msg string) (genMessage error) {
-	return writeCustomLog(LogTypeName, msg)
+func CustomLog(LogTypeName string, msg string, GroupByModule bool) (genMessage error) {
+	return writeCustomLog(LogTypeName, msg, GroupByModule)
 }
 
-func writeCustomLog(logType string, msg string) error {
+func writeCustomLog(logType string, msg string, GroupByModule bool) error {
 	var folder string
 	var file string
 	var function string
@@ -93,7 +93,7 @@ func writeCustomLog(logType string, msg string) error {
 		log.Panic(err)
 	}
 	var fullLocation string
-	if !GroupByFunc {
+	if !GroupByModule {
 		// Make the path for the file ->
 		fullLocation = fileLoc + "/" + function + ".log"
 	} else {
@@ -184,7 +184,7 @@ func writeLog(t LogType, msg string) error {
 	// Make the path for the file ->
 	// fullLocation := fileLoc + "/" + function + ".log"
 	var fullLocation string
-	if !GroupByFunc {
+	if GroupByFunc {
 		// Make the path for the file ->
 		fullLocation = fileLoc + "/" + function + ".log"
 	} else {
