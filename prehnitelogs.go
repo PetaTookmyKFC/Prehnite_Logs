@@ -182,7 +182,14 @@ func writeLog(t LogType, msg string) error {
 	}
 
 	// Make the path for the file ->
-	fullLocation := fileLoc + "/" + function + ".log"
+	// fullLocation := fileLoc + "/" + function + ".log"
+	var fullLocation string
+	if !GroupByFunc {
+		// Make the path for the file ->
+		fullLocation = fileLoc + "/" + function + ".log"
+	} else {
+		fullLocation = fileLoc + ".log"
+	}
 
 	// Create the error string
 
