@@ -270,12 +270,12 @@ func RunTestLogs() {
 
 	fmt.Println("Error - Simple ", err)
 
-	err = CustomLog("TEST", "Wow much custom logging!")
+	err = CustomLog("TEST", "Wow much custom logging!", false)
 	fmt.Println("Error - Custom ", err)
 
 	// Testing the Make Custom functions
 	AddType("Multiple", " - Multiple - So Lazy! : ")
-	l := GetCustomLogMethod("Multiple")
+	l := GetCustomLogMethod("Multiple", false)
 	err = l("Wow much custom logging!")
 	fmt.Println("Error - Custom MAGIC! ", err)
 	err = l("MORE CUSTOM LOGGING!")

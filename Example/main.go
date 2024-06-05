@@ -20,9 +20,9 @@ type Users struct {
 	logger   prehnitelogs.LogFunc
 }
 
-var AdminLog = prehnitelogs.GetCustomLogMethod("Admin")
-var SystemLog = prehnitelogs.GetCustomLogMethod("System")
-var UserLog = prehnitelogs.GetCustomLogMethod("User")
+var AdminLog = prehnitelogs.GetCustomLogMethod("Admin", true)
+var SystemLog = prehnitelogs.GetCustomLogMethod("System", true)
+var UserLog = prehnitelogs.GetCustomLogMethod("User", true)
 
 func (u *Users) HiddenAdminFunction() (bool, error) {
 
