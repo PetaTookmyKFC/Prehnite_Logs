@@ -14,6 +14,8 @@ import (
 
 const MainLoc string = "Logs"
 
+var GroupByFunc bool = true
+
 var LogLocks = sync.Map{}
 
 type LogFunc func(msg string) (genMessage error)
@@ -90,9 +92,13 @@ func writeCustomLog(logType string, msg string) error {
 	if err != nil {
 		log.Panic(err)
 	}
-
-	// Make the path for the file ->
-	fullLocation := fileLoc + "/" + function + ".log"
+	var fullLocation string
+	if !GroupByFunc {
+		// Make the path for the file ->
+		fullLocation = fileLoc + "/" + function + ".log"
+	} else {
+		fullLocation = fileLoc + ".log"
+	}
 
 	// Create the error string
 
