@@ -113,7 +113,7 @@ func writeCustomLog(logType string, msg string, GroupByModule bool) error {
 	}
 
 	Log = fmt.Sprintf("%s ( %s ) %s:%s >> %s\n", Log, time, file, fmt.Sprint(line), msg)
-	fmt.Println(Log)
+	fmt.Print(Log)
 
 	lock, _ := LogLocks.LoadOrStore(fullLocation, &sync.Mutex{})
 	lock.(*sync.Mutex).Lock()
@@ -215,7 +215,7 @@ func writeLog(t LogType, msg string) error {
 	}
 
 	Log = fmt.Sprintf("%s ( %s ) %s:%s >> %s\n", Log, time, file, fmt.Sprint(line), msg)
-	fmt.Println(Log)
+	fmt.Print(Log)
 
 	lock, _ := LogLocks.LoadOrStore(fullLocation, &sync.Mutex{})
 	lock.(*sync.Mutex).Lock()
